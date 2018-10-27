@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 ################## 初始化 Line Bot API ##################
 import os
 import dotenv
@@ -34,15 +35,20 @@ def callback():
 
 ################### 接收並處理文字訊息 ##################
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
+lunch_choices = [
+]
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    # print('Event:')
+    # print(event)
+    # print(type(event))
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=event.message.text))
+        TextSendMessage(text=event.message.text)) 
 #########################################################
 
 
 ####################### 執行 Flask ######################
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
